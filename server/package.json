@@ -1,0 +1,17 @@
+{
+  "name": "ronchi-connect-server",
+  "version": "0.1.0",
+  "description": "Signaling, session and team server for Ronchi Connect",
+  "private": true,
+  "main": "src/index.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test test/*.test.js",
+    "add-user": "node src/cli.js add-user"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

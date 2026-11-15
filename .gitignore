@@ -1,0 +1,11 @@
+node_modules/
+dist/
+server/data/
+server/downloads/*
+!server/downloads/.gitkeep
+deploy/.env
+deploy/data/
+deploy/downloads/*
+!deploy/downloads/.gitkeep
+*.log
+.DS_Store

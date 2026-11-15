@@ -1,0 +1,13 @@
+{
+  "productName": "Ronchi Connect",
+  "company": "Ronchi America",
+  "tagline": "Remote support for Ronchi filling and capping lines",
+  "accentColor": "#e2001a",
+  "serverUrl": "wss://connect.ronchiamerica.com/ws",
+  "websiteUrl": "https://connect.ronchiamerica.com",
+  "supportPhone": "",
+  "logoFile": "logo.webp",
+  "backgrounds": [
+    "filler.webp"
+  ]
+}

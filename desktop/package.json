@@ -1,0 +1,86 @@
+{
+  "name": "ronchi-connect",
+  "productName": "Ronchi Connect",
+  "version": "0.1.0",
+  "description": "Remote support for Ronchi America customers and technicians",
+  "author": "Ronchi America",
+  "private": true,
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux",
+    "test:e2e": "node test/e2e.js",
+    "fetch-brand": "node ../scripts/fetch-brand-assets.js"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6"
+  },
+  "devDependencies": {
+    "electron": "^45.3.2",
+    "electron-builder": "^26.18.0",
+    "playwright": "^1.65.1"
+  },
+  "build": {
+    "appId": "com.ronchiamerica.connect",
+    "productName": "Ronchi Connect",
+    "artifactName": "RonchiConnect-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "**/node_modules/@nut-tree-fork/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "shortcutName": "Ronchi Connect"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.utilities",
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Ronchi Connect uses the microphone for voice calls with your technician."
+      },
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility",
+      "icon": "build/icon.png"
+    },
+    "extraResources": [
+      {
+        "from": "../brand",
+        "to": "brand",
+        "filter": [
+          "**/*",
+          "!README.md"
+        ]
+      }
+    ],
+    "publish": null
+  }
+}

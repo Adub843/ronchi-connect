@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' app: data: blob:; media-src 'self' blob: mediastream:; connect-src ws: wss:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Ronchi Connect</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Each screen is built by a module in js/. app.js decides which one is shown. -->
+  <div id="backdrop" aria-hidden="true"></div>
+  <div id="app"></div>
+  <div id="overlays"></div>
+  <div id="toasts" role="status" aria-live="polite"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

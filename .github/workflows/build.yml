@@ -40,8 +40,16 @@ jobs:
         continue-on-error: true
       - run: npm ci
         working-directory: desktop
-      - run: npx electron-builder --publish never
+      - name: Build installer
         working-directory: desktop
+        shell: bash
+        # Signing settings that are not configured must be removed, not left empty:
+        # electron-builder treats an empty CSC_LINK as a certificate path and fails on macOS.
+        run: |
+          for name in CSC_LINK CSC_KEY_PASSWORD APPLE_ID APPLE_APP_SPECIFIC_PASSWORD APPLE_TEAM_ID; do
+            if [ -z "${!name}" ]; then unset "$name"; fi
+          done
+          npx electron-builder --publish never
         env:
           # Code signing. Without these secrets the installers are built unsigned.
           CSC_LINK: ${{ secrets.CSC_LINK }}
